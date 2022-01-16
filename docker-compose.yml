@@ -1,0 +1,8 @@
+﻿version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  counter-app:
+    build: .
+    ports:
+      - "5555:80"
