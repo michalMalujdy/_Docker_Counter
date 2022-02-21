@@ -5,4 +5,11 @@ services:
   counter-app:
     build: .
     ports:
-      - "5555:80"
+      - '5555:80'
+      - '5556:443'
+    environment:
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=counter
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/tools/https/localhost.pfx
+    volumes:
+      - ./tools/https:/tools/https:rw
